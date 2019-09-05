@@ -1,0 +1,4 @@
+export const FETCH_SESSIONS = 'FETCH_SESSIONS'
+export const FETCH_ALBUM_ONE = 'FETCH_ALBUM_ONE'
+
+
