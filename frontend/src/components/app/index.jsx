@@ -61,7 +61,7 @@ class App extends Component {
                 <Grid container spacing={24}>
                     <Grid item xs={12} className={'centerAlign'}>
                         <Grid item xs={12} className="list-sessions">
-                             <SessionsList/> 
+                             <SessionsList props={this.props}/> 
                         </Grid>
                      </Grid>
                 </Grid>
@@ -91,7 +91,9 @@ class App extends Component {
 }
 const mapStateToProps = state => ({ 
                                     settings: state.settings, 
-                                    sessions: state.sessions  })
+                                    dataLoading: state.sessions.all,
+
+                                  })
 const mapDispatchToProps = dispatch => bindActionCreators({ handleHistory, 
                                                             ...actions }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -14,7 +14,7 @@ class StyleHelmet extends Component {
                                 top: 14px !important;
                            } 
                            .pagination li.active {
-                                background-color: #49bfe1;
+                                background-color: #1E5168;
                                 border-radius: 50%;
                                 height: 30px;
                                 width: 30px;
@@ -24,7 +24,7 @@ class StyleHelmet extends Component {
                                 font-size: 15px;
                             }
                                 .item {
-                                    background: white !important;
+                                    background: #FFFAF7 !important;
                                     box-shadow: rgba(0, 0, 0, 0) 0px 3px 2px, rgba(0, 0, 0, 0.08) 0px 6px 18px !important;
                                     border: 1px solid #e6e6e68a;
                                 }
@@ -106,6 +106,13 @@ class StyleHelmet extends Component {
                                 .header-sessions {
                                     background: #1E5168 !important;
                                     color: white !important;
+                                }
+                                .MuiInputBase-marginDense-169 input {
+                                    border: 0px !important;
+                                    top: 11px;
+                                    position: relative;
+                                    left: 7px;
+                                    padding-right: 50px;
                                 }
                         `
           }

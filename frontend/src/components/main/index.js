@@ -3,12 +3,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import Helmet from 'react-helmet'
 import Messages from './messages/toastr'
-
-import { Link } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import { Icon } from 'react-icons-kit'
 import { ic_keyboard_arrow_down } from 'react-icons-kit/md/ic_keyboard_arrow_down'
-import { download } from 'react-icons-kit/icomoon/download'
+import { ic_search } from 'react-icons-kit/md/ic_search'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 
@@ -21,22 +19,30 @@ class Main extends Component {
                 <section>
                     <Grid container spacing={24}>
                         <Grid item xs={12} className={'centerAlign'}>
-                            <Grid container xs={12} className={'centerAlign border'}>
+                            <Grid container xs={12} className={'centerAlign'}>
                                 <Grid item xs={4} className={'alignLeft box-ranking'}>
-                                        <Button aria-label="Close" className="btnExp">
+                                        <Button aria-label="Close" 
+                                                className="btnExp"
+                                                onClick={(e) => console.info("Exportar") }
+
+                                                >
                                             <span className="btnNew">Exportar</span>
                                             <Icon icon={ic_keyboard_arrow_down} />
                                         </Button>
                                 
                                 </Grid>
-                                <Grid item xs={8} className={'alignRight box-ranking'}>
+                                <Grid item xs={8} className={'alignRight box-search'}>
                                         <TextField
                                              id="outlined-dense"
-                                             label="Dense"
+                                             className={'input'} 
+                                             label="Digite sua pesquisa..."
                                              margin="dense"
                                              variant="outlined"
                                              style={{ borderBottom: 0 }}
+                                             onKeyPress={(e) => e.key === "Enter" && console.info(e.target.value) }
                                            />
+                                            <Icon icon={ic_search} />
+
                                 </Grid>
                             </Grid>
 
@@ -69,6 +75,10 @@ class Main extends Component {
                                     background: #52BC76;
                                     padding: 0;
                                     color: white;
+                                    position: relative !important;
+                                    left: 35px !important;
+                                    top: 18px !important;
+                                    
                                }
                               .btnExp:hover,
                               .btnExp:focus{
@@ -77,6 +87,26 @@ class Main extends Component {
                               .btnExp svg {
                                     color: white !important;
                              }
+                             .MuiInputBase-marginDense-169{
+                                     height: 35px;
+                             }
+                            .MuiInputBase-marginDense-169 input{
+                                    border: 0px;
+                                  
+                            }
+                            .MuiFormControl-marginDense-129 {
+                                position: relative !important;
+                                    right: 35px !important;
+                                    top: 18px !important;
+                            }
+                            .box-search svg {
+                                width: 28px;
+                                height: 28px;
+                                color: #1E5168;
+                                position: relative;
+                                right: 70px;
+                                top: 30px;
+                                }
                           
                             `
                         }]}

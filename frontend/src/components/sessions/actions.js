@@ -9,6 +9,9 @@ import _ from 'lodash'
 
 export function fetchSessions() {
     return (dispatch, getState) => {
+
+        setTimeout(() => {
+            
        
         const { app } = getState(),
                 url = `${app.endpoints.api.host}/1/sessions`
@@ -17,12 +20,13 @@ export function fetchSessions() {
                     .then(resp => {
                         dispatch([{
                             type: FETCH_SESSIONS,
-                            payload: _.get(resp.data, 'data.content') || []
+                            payload: _.get(resp.data, 'data.content')
                         }])
                     })
                     .catch(e => {
                         toastr.error('Atenção', 'Falha na listagem das sessões')
                     })
+        }, 2000);
         
     }
 }

@@ -4,12 +4,14 @@ import _ from 'lodash'
 import { ScaleLoader } from 'react-spinners'
 
 export const withLoading = Component => {
-  const WithLoading = ({ props }) => console.info(_.size(props.dataLoading)) &&
-  _.size(props) ? (
-    <Component {...props} />
-  ) : (
+  
+  const WithLoading = ({ props }) => 
+  
+  _.size(props.dataLoading) ? (
+    
+      <Component {...props} />
+    ) : (
     <center>
-      {console.warn(props)}
       {typeof props.dataLoading === 'boolean' && (
         <ScaleLoader sizeUnit="px" size={250} color="#07bed5" loading={true} />
       )}

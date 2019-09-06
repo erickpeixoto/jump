@@ -1,10 +1,10 @@
-# PROJETO – PROGRAMADOR WEB 
+# PROJETO JUMP PARK– FULL STACK DEV
 
 
 ## Sobre o Projeto
 
-CRUD implementado com ReactJS, manipulando o estado da aplicação com Redux. 
-Recurso gerado por ApiRest implementada em Node e consumido pelo Fron-End
+Front-End implementado em ReactJS, manipulando o estado da aplicação com Redux. 
+Recurso gerado por ApiRest e consumido pelo Fron-End
 
 ### Requisitos
 
@@ -12,21 +12,10 @@ Para o funcionamento, além do [NodeJs](https://nodejs.org/en/ ), será necessá
 
 ### Instalação
 
-Acesse as pastas frontend e backend, e rode o comando: 
+Acesse a pasta frontend e rode o comando: 
 
 ```
-npm install
-```
-
-Após as instalações, entre em backend e rode:
-
-```
-node 
-```
-ou
-
-```
-nodemon 
+sudo npm install ou npm install
 ```
 
 Para ter acesso ao Front-End, acesse a pasta **frontend** e rode:
@@ -50,8 +39,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Redux-Form
 * Material-ui
 * Axios
-* Node
-* MongoDB
-* Express
-* Mongoose
   

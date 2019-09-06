@@ -4,7 +4,7 @@ import {
 } from './constants'
 
 const INITIAL_STATE = {
-        all: [],
+        all: false,
         one: {}
 }
         

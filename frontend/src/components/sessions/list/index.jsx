@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux'
 import { deleteAlbum } from '../actions'
 
 import Grid from '@material-ui/core/Grid'
-import { confirmAlert } from 'react-confirm-alert' // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 import Pagination from 'react-js-pagination'
 import Helmet from './public/styles/helmet'
 import moment from 'moment'
+import { withLoading } from '../../hocs/withLoading'
 import _ from 'lodash'
 
 const Header = props => (
@@ -35,34 +35,6 @@ class ListSessions extends Component {
     this.handlePageChange = this.handlePageChange.bind(this)
   }
 
-  submit(value) {
-    confirmAlert({
-      customUI: ({ onClose }) => {
-        return (
-          <div className="react-confirm-alert-body">
-            <h5>Confirma a exclusão?</h5>
-            <p>
-              {' '}
-              <small>Você deseja realmente excluir o álbum?</small>
-            </p>
-            <button className={'button-recuse'} onClick={onClose}>
-              Cancelar
-            </button>
-            <button
-              className={'button-confirm'}
-              onClick={() => {
-                this.props.deleteAlbum(value)
-                onClose()
-              }}
-            >
-              Sim, excluir!
-            </button>
-          </div>
-        )
-      }
-    })
-  }
-
   handlePageChange(pageNumber) {
     this.setState({ activePage: pageNumber })
   }
@@ -85,11 +57,9 @@ class ListSessions extends Component {
   }
 
   renderRows() {
-    const {
-      sessions: { all }
-    } = this.props
+    const { dataLoading } = this.props
     const list = this.listItems(
-      all,
+      dataLoading,
       this.state.activePage,
       this.state.itemsPerPage
     )
@@ -101,49 +71,42 @@ class ListSessions extends Component {
         </Grid>
         <Grid xs={3} className={'count'}>
           <span className={'sum'}>
-            {moment(_.get(session, 'startDateTime') ).format('DD/MM/YYYY (HH[h]mm)')}
+            {moment(_.get(session, 'startDateTime')).format(
+              'DD/MM/YYYY (HH[h]mm)'
+            )}
           </span>
         </Grid>
         <Grid xs={3} className={'count'}>
-          <span className={'sum'}>{_.get(session, 'userName')}</span>
+          <span className={'sum'}>
+            {moment(_.get(session, 'endDateTime')).format(
+              'DD/MM/YYYY (HH[h]mm)'
+            )}
+          </span>
         </Grid>
       </Grid>
     ))
   }
   render() {
-    const {
-      sessions: { all }
-    } = this.props
+    const { dataLoading } = this.props
     return (
       <div>
         <Grid xs={12} className={'container-companies'}>
           <Grid xs={12} className={'data-sessions'}>
             <p>
-              <strong>Quantidade em base: </strong>{' '}
-              <big>{all && all.length}</big> -
-              <span className={'time-day'}>
-                {new Intl.DateTimeFormat('pt-BR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: '2-digit'
-                }).format(new Date())}
-              </span>
+              <strong>Registros: </strong>{' '}
+              <big>{dataLoading && dataLoading.length}</big>
             </p>
             <Header />
           </Grid>
 
-          {all && all.length > 0 ? (
-            this.renderRows()
-          ) : (
-            <p className={'center-align t10'}> Não há álbuns cadastrados. </p>
-          )}
+          {this.renderRows()}
         </Grid>
-        {all && all.length > 0 && (
+        {dataLoading && dataLoading.length > 0 && (
           <Grid className={'align-right box-pagination'}>
             <Pagination
               activePage={this.state.activePage}
               itemsCountPerPage={this.state.itemsPerPage}
-              totalItemsCount={all && all.length}
+              totalItemsCount={dataLoading && dataLoading.length}
               pageRangeDisplayed={5}
               onChange={this.handlePageChange}
             />
@@ -164,4 +127,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ListSessions)
+)(withLoading(ListSessions))

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 class StyleHelmet extends Component {
-    render() {
-        return (
-            <Helmet
-                style={[{
-                    "cssText": `
+  render() {
+    return (
+      <Helmet
+        style={[
+          {
+            cssText: `
                              
                             .box-pagination{
                                 float: right;
@@ -13,7 +14,7 @@ class StyleHelmet extends Component {
                                 top: 14px !important;
                            } 
                            .pagination li.active {
-                                background-color: #49bfe1;
+                                background-color: #1E5168;
                                 border-radius: 50%;
                                 height: 30px;
                                 width: 30px;
@@ -343,10 +344,11 @@ class StyleHelmet extends Component {
                                     padding: 20px
                                 }
                         `
-                }]}
-            />
-        )
-    }
+          }
+        ]}
+      />
+    )
+  }
 }
 
 export default StyleHelmet
